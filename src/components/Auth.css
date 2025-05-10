@@ -1,0 +1,51 @@
+/* App.css */
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(135deg, #f5af19, #f12711); /* Warm orange-pink gradient */
+  color: #fff;
+}
+
+.auth-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(6px);
+}
+
+.auth-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.auth-container input,
+.auth-container button {
+  width: 90%;
+  padding: 12px;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+.auth-container input {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+.auth-container button {
+  background-color: #fff;
+  color: #f12711;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.auth-container button:hover {
+  background-color: #ffe5b4;
+}

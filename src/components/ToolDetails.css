@@ -1,0 +1,30 @@
+/* src/components/ToolDetails.css */
+.tool-details {
+  background-color: #fff;
+  color: #333;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #aaa;
+  width: 250px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.tool-details h3 {
+  margin-top: 0;
+  color: #f12711;
+}
+
+.tool-details button {
+  background: #f12711;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.rating span {
+  font-size: 20px;
+  margin-right: 5px;
+}

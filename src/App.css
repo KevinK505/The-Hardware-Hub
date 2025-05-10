@@ -1,0 +1,118 @@
+/* src/App.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+  background-color: #FFF7F1;
+  color: #333;
+}
+
+.App {
+  text-align: center;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #FF6F61;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  color: #FF6F61;
+  margin-top: 2rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  padding: 0.6rem;
+  border: 2px solid #FFB74D;
+  border-radius: 5px;
+  margin: 0.5rem;
+  width: 250px;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  background-color: #FFB74D;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: #FFA726;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #FF6F61;
+}
+.map-container {
+  background-color: #FFF0E5;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 30px auto;
+  text-align: center;
+  border: 2px solid #FFB74D;
+}
+
+.map-container h2 {
+  color: #FF6F61;
+  margin-bottom: 10px;
+}
+
+.map-container input[type="text"] {
+  padding: 10px;
+  width: 60%;
+  max-width: 400px;
+  border: 2px solid #FFB74D;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+.leaflet-popup-content-wrapper {
+  animation: fadeInPop 0.4s ease-out;
+  border-radius: 10px;
+  background-color: #fff3e0; /* warm background */
+  color: #4e342e; /* dark brown text */
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.leaflet-popup-content {
+  font-size: 14px;
+  padding: 5px;
+  text-align: center;
+}
+.leaflet-marker-icon:hover {
+  animation: bounce 0.5s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+
