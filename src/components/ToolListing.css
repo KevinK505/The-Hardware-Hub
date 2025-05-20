@@ -1,0 +1,65 @@
+.tool-listing {
+  padding: 20px;
+  margin: 20px auto;
+  background-color: #121212; /* very dark background */
+  border-radius: 12px;
+  max-width: 700px;
+  box-shadow: 0 4px 20px rgba(255, 87, 34, 0.5); /* subtle orange shadow */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #eee; /* light text */
+}
+
+.tool-listing h2 {
+  text-align: center;
+  color: #ff5722; /* vibrant orange */
+  margin-bottom: 20px;
+}
+
+.tool-listing ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tool-listing li {
+  background: #1f1f1f; /* dark card */
+  border: 1px solid #ff5722; /* orange border */
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.tool-listing li:hover {
+  transform: scale(1.02);
+  border-color: #ff7043; /* lighter orange on hover */
+  box-shadow: 0 0 8px #ff7043;
+}
+
+.tool-listing strong {
+  font-size: 1.2em;
+  color: #ff7043; /* lighter orange */
+}
+
+.tool-listing em {
+  color: #bbb;
+  display: block;
+  margin-top: 5px;
+  font-style: normal; /* cleaner italic style */
+  opacity: 0.8;
+}
+
+.tool-listing button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #ff5722; /* orange button */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95em;
+  transition: background-color 0.2s ease;
+}
+
+.tool-listing button:hover {
+  background-color: #e64a19; /* darker orange on hover */
+}

@@ -1,0 +1,25 @@
+/* Profile.css */
+.profile-container {
+  padding: 20px;
+  font-size: 18px;
+  color: #f1f1f1;
+  background-color: #121212; /* Dark almost black */
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 87, 34, 0.6); /* orange glow */
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 15px;
+  background-color: #ff5722; /* vibrant orange */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e64a19; /* darker orange/red */
+}

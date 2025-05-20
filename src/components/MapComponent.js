@@ -4,64 +4,64 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { db } from '../firebase/firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
 import UserContext from '../UserContext';
+import './MapComponent.css';
 
-// 🛠 Mock tools with experience levels
-const mockTools = [
-  {
-    id: 1,
-    name: 'Hammer',
-    lat: 12.9716,
-    lng: 77.5946,
-    address: 'Hardware Shop 1, MG Road',
-    level: 'Beginner',
-  },
-  {
-    id: 2,
-    name: 'Drill',
-    lat: 12.9738,
-    lng: 77.5993,
-    address: 'Tool World, Church Street',
-    level: 'Intermediate',
-  },
-  {
-    id: 3,
-    name: 'Wrench',
-    lat: 12.9698,
-    lng: 77.5915,
-    address: 'FixIt Store, Brigade Road',
-    level: 'Expert',
-  },
-  {
-    id: 4,
-    name: 'Paint Brush',
-    lat: 12.9666,
-    lng: 77.5872,
-    address: 'Color Pro, Indiranagar',
-    level: 'Beginner',
-  }
-];
+// Fix leaflet marker icon path issue
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl:
+    'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl:
+    'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl:
+    'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
 
 function MapComponent() {
-  const { user, experienceLevel } = useContext(UserContext);
+  const { user } = useContext(UserContext);
+  const [tools, setTools] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredTools, setFilteredTools] = useState([]);
 
-  // Filter tools by search term and experience level
   useEffect(() => {
-    const toolsForLevel = mockTools.filter(tool => tool.level === experienceLevel);
-    if (searchTerm === '') {
-      setFilteredTools(toolsForLevel);
-    } else {
-      const results = toolsForLevel.filter((tool) =>
-        tool.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredTools(results);
-    }
-  }, [searchTerm, experienceLevel]);
+    const fetchTools = async () => {
+      const snapshot = await getDocs(collection(db, 'rentalTools'));
+      const toolsData = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      console.log("Fetched tools:", toolsData);
+      setTools(toolsData);
+      setFilteredTools(toolsData);
+    };
+    fetchTools();
+  }, []);
 
-  // Save to Firestore favorites
+  const filterTools = (term) => {
+    if (!term) {
+      setFilteredTools(tools);
+      return;
+    }
+
+    const filtered = tools.filter(tool =>
+      tool.name?.toLowerCase().includes(term.toLowerCase())
+    );
+    setFilteredTools(filtered);
+  };
+
+  const handleSearch = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      filterTools(searchTerm);
+    }
+  };
+
+  const handleManualSearch = () => {
+    filterTools(searchTerm);
+  };
+
   const handleSaveToFavorites = async (tool) => {
     if (!user) {
       alert('Please log in to save favorites!');
@@ -73,8 +73,8 @@ function MapComponent() {
         uid: user.uid,
         name: tool.name,
         address: tool.address,
-        lat: tool.lat,
-        lng: tool.lng,
+        lat: tool.latitude,
+        lng: tool.longitude,
         savedAt: new Date()
       });
       alert(`${tool.name} saved to favorites!`);
@@ -86,32 +86,43 @@ function MapComponent() {
   return (
     <div className="map-container">
       <h2>Find Tools Near You</h2>
-      <input
-        type="text"
-        placeholder="Search tool (e.g., Hammer)"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
+      <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '10px' }}>
+        <input
+          type="text"
+          placeholder="Search tool (e.g., Hammer)"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={handleSearch}
+        />
+        <button onClick={handleManualSearch}>Search</button>
+      </div>
 
-      <MapContainer center={[12.9716, 77.5946]} zoom={14} style={{ height: '400px', marginTop: '10px' }}>
+      <MapContainer center={[20.5937, 78.9629]} zoom={5} style={{ height: '500px', marginTop: '10px' }}>
         <TileLayer
           attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {filteredTools.map((tool) => (
-          <Marker key={tool.id} position={[tool.lat, tool.lng]}>
-            <Popup>
-              <div>
-                <strong>🛠️ {tool.name}</strong><br />
-                📍 {tool.address}<br />
-                👤 For: {tool.level}<br />
-                <button onClick={() => handleSaveToFavorites(tool)} style={{ marginTop: '5px' }}>
-                  ❤️ Save to Favorites
-                </button>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
+        {filteredTools.map((tool, idx) => {
+          const lat = tool.latitude || tool.location?.lat;
+          const lng = tool.longitude || tool.location?.lng;
+
+          return (
+            lat && lng && (
+              <Marker key={idx} position={[lat, lng]}>
+                <Popup>
+                  <div>
+                    <strong>🛠️ {tool.name}</strong><br />
+                    📍 {tool.address || 'No address'}<br />
+                    👤 For: {tool.level || 'All levels'}<br />
+                    <button onClick={() => handleSaveToFavorites(tool)} style={{ marginTop: '5px' }}>
+                      ❤️ Save to Favorites
+                    </button>
+                  </div>
+                </Popup>
+              </Marker>
+            )
+          );
+        })}
       </MapContainer>
     </div>
   );

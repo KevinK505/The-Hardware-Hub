@@ -1,0 +1,56 @@
+/* Navbar Container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111; /* Deep black */
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(255, 87, 34, 0.2); /* Orange glow */
+}
+
+/* Navbar Logo */
+.navbar-logo img {
+  width: 40px;
+  height: auto;
+}
+
+/* Navbar Links */
+.navbar-links {
+  display: flex;
+  list-style: none;
+}
+
+.navbar-links li {
+  margin-left: 20px;
+}
+
+/* Navbar Link Styling */
+.navbar-links a {
+  color: #f1f1f1;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a i {
+  margin-right: 8px;
+}
+
+/* Hover Effects */
+.navbar-links a:hover,
+.navbar-links a:focus {
+  color: #ff5722; /* Bold orange-red highlight */
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+}

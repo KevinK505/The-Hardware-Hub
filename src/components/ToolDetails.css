@@ -1,30 +1,37 @@
 /* src/components/ToolDetails.css */
 .tool-details {
-  background-color: #fff;
-  color: #333;
+  background-color: #1a1a1a; /* very dark background */
+  color: #f1f1f1; /* light text for contrast */
   padding: 10px;
   border-radius: 12px;
-  box-shadow: 0 0 10px #aaa;
+  box-shadow: 0 0 12px rgba(255, 87, 34, 0.7); /* subtle orange glow */
   width: 250px;
   font-family: 'Quicksand', sans-serif;
 }
 
 .tool-details h3 {
   margin-top: 0;
-  color: #f12711;
+  color: #ff5722; /* vibrant orange */
 }
 
 .tool-details button {
-  background: #f12711;
+  background: #ff5722; /* orange button */
   color: #fff;
   border: none;
   padding: 8px 12px;
   border-radius: 8px;
   cursor: pointer;
   margin-bottom: 10px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.tool-details button:hover {
+  background: #e64a19; /* darker orange/red on hover */
 }
 
 .rating span {
   font-size: 20px;
   margin-right: 5px;
+  color: #ff7043; /* lighter orange for stars or rating */
 }

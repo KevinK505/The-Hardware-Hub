@@ -1,26 +1,26 @@
-/* App.css */
 body {
   margin: 0;
   font-family: 'Quicksand', sans-serif;
-  background: linear-gradient(135deg, #f5af19, #f12711); /* Warm orange-pink gradient */
-  color: #fff;
+  background-color: #0d0d0d; /* Dark black background */
+  color: #f5f5f5; /* Light gray for contrast */
 }
 
 .auth-container {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 69, 0, 0.1); /* Translucent orange-red */
+  border: 1px solid #ff4500;
   border-radius: 12px;
   padding: 2rem;
   margin: 2rem auto;
   max-width: 400px;
   text-align: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 24px rgba(255, 69, 0, 0.3);
   backdrop-filter: blur(6px);
 }
 
 .auth-container h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: #fff;
+  color: #ff4500; /* Bright orange-red title */
 }
 
 .auth-container input,
@@ -34,18 +34,20 @@ body {
 }
 
 .auth-container input {
-  background-color: rgba(255, 255, 255, 0.8);
-  color: #000;
+  background-color: #1a1a1a; /* Dark input background */
+  color: #f5f5f5;
+  border: 1px solid #ff4500;
 }
 
 .auth-container button {
-  background-color: #fff;
-  color: #f12711;
+  background-color: #ff4500;
+  color: #000;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .auth-container button:hover {
-  background-color: #ffe5b4;
+  background-color: #ff6347;
+  transform: scale(1.05);
 }

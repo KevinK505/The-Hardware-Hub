@@ -1,0 +1,35 @@
+.my-requests {
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 2rem auto;
+  max-width: 600px;
+  box-shadow: 0 0 15px rgba(255, 87, 34, 0.2);
+  color: #f1f1f1;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.my-requests h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #ff9800;
+}
+
+.my-requests ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.my-requests li {
+  background: #2c2c2c;
+  border: 1px solid #ff5722;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  color: #fff;
+  transition: background 0.3s ease;
+}
+
+.my-requests li:hover {
+  background: #3a3a3a;
+}

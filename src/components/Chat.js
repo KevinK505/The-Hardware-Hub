@@ -1,15 +1,17 @@
 // src/components/Chat.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { getDatabase, ref, push, onValue } from 'firebase/database';
+import './Chat.css';
 
 function Chat({ user }) {
-  const db = getDatabase();
-  const chatRef = ref(db, 'messages');
-
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const messagesEndRef = useRef(null);
 
   useEffect(() => {
+    const db = getDatabase();
+    const chatRef = ref(db, 'messages');
+
     onValue(chatRef, (snapshot) => {
       const data = snapshot.val();
       const msgs = [];
@@ -20,12 +22,20 @@ function Chat({ user }) {
     });
   }, []);
 
+  // 🔽 Auto-scroll every time messages update
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
   const sendMessage = () => {
     if (message.trim() === '') return;
 
+    const db = getDatabase();
+    const chatRef = ref(db, 'messages');
+
     push(chatRef, {
       user: user.email,
-      text: message,
+      text: message.trim(),
       timestamp: Date.now(),
     });
 
@@ -33,21 +43,32 @@ function Chat({ user }) {
   };
 
   return (
-    <div>
-      <h2>Community Chat</h2>
-      <div style={{ height: '200px', overflowY: 'scroll', border: '1px solid gray', padding: '10px' }}>
+    <div className="chat-container">
+      <h2>💬 Community Chat</h2>
+
+      <div className="chat-box">
         {messages.map((msg) => (
-          <p key={msg.id}><strong>{msg.user}</strong>: {msg.text}</p>
+          <div
+            key={msg.id}
+            className={`chat-message ${msg.user === user.email ? 'own' : 'other'}`}
+          >
+            <div className="message-user">{msg.user}</div>
+            <div className="message-text">{msg.text}</div>
+          </div>
         ))}
+        <div ref={messagesEndRef} />
       </div>
-      <input
-        type="text"
-        value={message}
-        placeholder="Type your message"
-        onChange={(e) => setMessage(e.target.value)}
-        onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-      />
-      <button onClick={sendMessage}>Send</button>
+
+      <div className="chat-input-bar">
+        <input
+          type="text"
+          value={message}
+          placeholder="Type a message..."
+          onChange={(e) => setMessage(e.target.value)}
+          onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+        />
+        <button onClick={sendMessage}>Send</button>
+      </div>
     </div>
   );
 }
