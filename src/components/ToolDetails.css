@@ -1,22 +1,21 @@
-/* src/components/ToolDetails.css */
 .tool-details {
-  background-color: #1a1a1a; /* very dark background */
-  color: #f1f1f1; /* light text for contrast */
+  background-color: #121212;
+  color: #ffffff;
   padding: 10px;
   border-radius: 12px;
-  box-shadow: 0 0 12px rgba(255, 87, 34, 0.7); /* subtle orange glow */
+  box-shadow: 0 0 12px rgba(255, 87, 34, 0.6);
   width: 250px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .tool-details h3 {
   margin-top: 0;
-  color: #ff5722; /* vibrant orange */
+  color: #ff6d00;
 }
 
 .tool-details button {
-  background: #ff5722; /* orange button */
-  color: #fff;
+  background: #ff6d00;
+  color: #ffffff;
   border: none;
   padding: 8px 12px;
   border-radius: 8px;
@@ -27,11 +26,23 @@
 }
 
 .tool-details button:hover {
-  background: #e64a19; /* darker orange/red on hover */
+  background: #d84315;
+}
+
+.tool-details button:focus {
+  outline: 2px solid #ffa270;
+  outline-offset: 2px;
 }
 
 .rating span {
   font-size: 20px;
   margin-right: 5px;
-  color: #ff7043; /* lighter orange for stars or rating */
+  color: #ffa270;
+}
+
+@media (max-width: 600px) {
+  .tool-details {
+    width: 100%;
+    padding: 8px;
+  }
 }

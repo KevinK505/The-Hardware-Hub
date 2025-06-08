@@ -13,18 +13,20 @@ import Auth from './components/Auth';
 import MapComponent from './components/MapComponent';
 import FavoritesList from './components/FavoritesList';
 import Chat from './components/Chat';
-import ExperienceSelector from './components/ExperienceSelector';
 import ToolImageUpload from './components/ToolImageUpload';
 import ToolRentalForm from './components/ToolRentalForm';
-import ToolUploadForm from './components/ToolUploadForm'; // ✅ Make sure this exists
+import ToolUploadForm from './components/ToolUploadForm';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 import UserContext from './UserContext';
 
+// ✅ NEW: Import the About and Support pages
+import About from './components/About';
+import Support from './components/Support'; 
+
 function App() {
   const [user, setUser] = useState(null);
-  const [experienceLevel, setExperienceLevel] = useState('Beginner');
 
   return (
     <Router>
@@ -35,12 +37,10 @@ function App() {
             <Auth onAuthSuccess={setUser} />
           </>
         ) : (
-          <UserContext.Provider value={{ user, experienceLevel }}>
+          <UserContext.Provider value={{ user }}>
             <Navbar />
             <h1 id="home">The Hardware Hub – Find Tools Near You</h1>
             <p>Welcome, {user.email}!</p>
-
-            <ExperienceSelector setExperienceLevel={setExperienceLevel} />
 
             <Routes>
               <Route path="/" element={<h2>Welcome to The Hardware Hub!</h2>} />
@@ -54,7 +54,11 @@ function App() {
               <Route path="/tool-rental" element={<ToolRentalForm />} />
               <Route path="/upload" element={<ToolImageUpload />} />
               <Route path="/tool-listing-form" element={<ToolListingForm />} />
-              <Route path="/add-tool" element={<ToolUploadForm />} /> {/* ✅ Route added */}
+              <Route path="/add-tool" element={<ToolUploadForm />} />
+
+              {/* ✅ NEW: About and Support page routes */}
+              <Route path="/about" element={<About />} />
+              <Route path="/support" element={<Support />} />
             </Routes>
 
             <Footer />

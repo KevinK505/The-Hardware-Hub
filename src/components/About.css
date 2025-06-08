@@ -1,0 +1,44 @@
+.about-container {
+  background-color: #121212;
+  color: #E0E0E0;
+  padding: 40px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.about-container h1 {
+  color: #FFCC70;
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+}
+
+.about-container p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: auto;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.about-container h2 {
+  margin-top: 40px;
+  color: #FF6F61;
+  font-size: 1.8rem;
+}
+
+.social-icons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.social-icons img {
+  width: 48px;
+  height: 48px;
+  transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
+}

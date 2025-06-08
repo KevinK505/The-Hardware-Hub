@@ -1,26 +1,26 @@
 body {
   margin: 0;
   font-family: 'Quicksand', sans-serif;
-  background-color: #0d0d0d; /* Dark black background */
-  color: #f5f5f5; /* Light gray for contrast */
+  background-color: #0d0d0d;
+  color: #f0f0f0; /* Improved contrast over pure white */
 }
 
 .auth-container {
-  background: rgba(255, 69, 0, 0.1); /* Translucent orange-red */
-  border: 1px solid #ff4500;
+  background: rgba(255, 87, 34, 0.08);
+  border: 1px solid #ff5722;
   border-radius: 12px;
   padding: 2rem;
   margin: 2rem auto;
   max-width: 400px;
   text-align: center;
-  box-shadow: 0 8px 24px rgba(255, 69, 0, 0.3);
-  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 24px rgba(255, 87, 34, 0.3);
+  backdrop-filter: blur(4px);
 }
 
 .auth-container h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: #ff4500; /* Bright orange-red title */
+  color: #ff6f00; /* Brighter, more accessible orange */
 }
 
 .auth-container input,
@@ -34,20 +34,24 @@ body {
 }
 
 .auth-container input {
-  background-color: #1a1a1a; /* Dark input background */
-  color: #f5f5f5;
-  border: 1px solid #ff4500;
+  background-color: #1c1c1c;
+  color: #f0f0f0;
+  border: 1px solid #ff6f00;
+}
+
+.auth-container input::placeholder {
+  color: #cccccc;
 }
 
 .auth-container button {
-  background-color: #ff4500;
-  color: #000;
+  background-color: #ff6f00;
+  color: #0d0d0d;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .auth-container button:hover {
-  background-color: #ff6347;
+  background-color: #ffa040;
   transform: scale(1.05);
 }

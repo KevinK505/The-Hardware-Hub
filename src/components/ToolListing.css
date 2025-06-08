@@ -1,17 +1,17 @@
 .tool-listing {
   padding: 20px;
   margin: 20px auto;
-  background-color: #121212; /* very dark background */
+  background-color: #121212;
   border-radius: 12px;
   max-width: 700px;
-  box-shadow: 0 4px 20px rgba(255, 87, 34, 0.5); /* subtle orange shadow */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #eee; /* light text */
+  box-shadow: 0 4px 20px rgba(255, 87, 34, 0.4);
+  font-family: 'Segoe UI', sans-serif;
+  color: #ffffff;
 }
 
 .tool-listing h2 {
   text-align: center;
-  color: #ff5722; /* vibrant orange */
+  color: #ff6d00;
   margin-bottom: 20px;
 }
 
@@ -21,8 +21,8 @@
 }
 
 .tool-listing li {
-  background: #1f1f1f; /* dark card */
-  border: 1px solid #ff5722; /* orange border */
+  background: #1a1a1a;
+  border: 1px solid #ff6d00;
   border-radius: 8px;
   padding: 15px;
   margin-bottom: 15px;
@@ -31,27 +31,27 @@
 
 .tool-listing li:hover {
   transform: scale(1.02);
-  border-color: #ff7043; /* lighter orange on hover */
-  box-shadow: 0 0 8px #ff7043;
+  border-color: #ffa270;
+  box-shadow: 0 0 8px #ff8a50;
 }
 
 .tool-listing strong {
   font-size: 1.2em;
-  color: #ff7043; /* lighter orange */
+  color: #ffa270;
 }
 
 .tool-listing em {
-  color: #bbb;
+  color: #cccccc;
   display: block;
   margin-top: 5px;
-  font-style: normal; /* cleaner italic style */
-  opacity: 0.8;
+  font-style: normal;
+  opacity: 0.9;
 }
 
 .tool-listing button {
   margin-top: 10px;
   padding: 8px 16px;
-  background-color: #ff5722; /* orange button */
+  background-color: #ff6d00;
   color: white;
   border: none;
   border-radius: 6px;
@@ -61,5 +61,21 @@
 }
 
 .tool-listing button:hover {
-  background-color: #e64a19; /* darker orange on hover */
+  background-color: #d84315;
+}
+
+.tool-listing button:focus {
+  outline: 2px solid #ffa270;
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .tool-listing {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .tool-listing li {
+    padding: 12px;
+  }
 }

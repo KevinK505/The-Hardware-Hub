@@ -1,0 +1,99 @@
+.support-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #121212;
+  color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(255, 87, 34, 0.4);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.support-page h1 {
+  color: #ff6d00;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.support-page .intro {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.1em;
+  color: #cccccc;
+}
+
+.faq-section h2,
+.contact-section h2,
+.form-section h2 {
+  color: #ffa270;
+  margin-top: 20px;
+}
+
+.faq-section ul {
+  list-style: disc inside;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.faq-section li {
+  margin-bottom: 10px;
+  color: #dddddd;
+}
+
+.contact-section a {
+  color: #ff6d00;
+  text-decoration: none;
+}
+
+.contact-section a:hover {
+  text-decoration: underline;
+}
+
+.form-section form {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-section label {
+  margin: 10px 0 5px;
+  color: #ffa270;
+}
+
+.form-section input,
+.form-section textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+.form-section input:focus,
+.form-section textarea:focus {
+  border-color: #ff6d00;
+  outline: none;
+  background-color: #262626;
+}
+
+.form-section button {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #ff6d00;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.form-section button:hover {
+  background-color: #d84315;
+}
+
+@media (max-width: 600px) {
+  .support-page {
+    padding: 15px;
+  }
+}

@@ -1,18 +1,18 @@
 .tool-upload-form {
   max-width: 500px;
   margin: 30px auto;
-  background: #121212; /* very dark background */
+  background: #121212;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(255, 87, 34, 0.6); /* warm orange shadow */
-  color: #eee;
+  box-shadow: 0 8px 25px rgba(255, 87, 34, 0.5);
+  color: #ffffff;
   font-family: 'Segoe UI', sans-serif;
 }
 
 .tool-upload-form h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #ff5722; /* bright orange heading */
+  color: #ff6d00;
 }
 
 .tool-upload-form form input {
@@ -20,22 +20,22 @@
   padding: 10px;
   margin: 8px 0;
   border-radius: 8px;
-  border: 1px solid #444; /* dark border */
-  background-color: #1e1e1e; /* dark input background */
-  color: #eee;
-  transition: border-color 0.3s ease;
+  border: 1px solid #555;
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .tool-upload-form form input:focus {
-  border-color: #ff5722; /* orange highlight on focus */
+  border-color: #ff6d00;
   outline: none;
-  background-color: #2a2a2a;
+  background-color: #262626;
 }
 
 .tool-upload-form button {
   width: 100%;
   padding: 12px;
-  background: #ff5722; /* fiery orange button */
+  background: #ff6d00;
   color: white;
   border: none;
   border-radius: 8px;
@@ -45,5 +45,17 @@
 }
 
 .tool-upload-form button:hover {
-  background: #e64a19; /* darker orange on hover */
+  background: #d84315;
+}
+
+.tool-upload-form button:focus {
+  outline: 2px solid #ffa270;
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .tool-upload-form {
+    margin: 20px;
+    padding: 15px;
+  }
 }
